@@ -42,24 +42,49 @@ angular.module('app')
               }
             }
           })
-          .state('app.dashboard', {
+          .state('app.home', {
             url: '/home',
-            templateUrl: 'views/dashboard.html',
+            templateUrl: 'views/home.html',
             resolve: {
-              auth : function(authFactory)
-              {
-                return authFactory.proccessNoAuth();
-              },
               load: function($ocLazyLoad) {
                 return $ocLazyLoad.load({
                   name: "app",
                   files: [
-                    'scripts/factories/evaluation.js',
-                    'scripts/controllers/dashboard.js'
+                    'styles/flexslider.css',
+                    'libs/jquery/jquery.flexslider.js',
+                    'controllers/home.js'
                     ]
                   });
                 }
               }
+          })
+          .state('app.producto',{
+            url: '/producto',
+            templateUrl: 'views/producto/index.html',
+            resolve: {
+              load: function($ocLazyLoad){
+                return $ocLazyLoad.load({
+                  name: "app",
+                  files: [
+                    'controllers/producto/index.js'
+                  ]
+                });
+              }
+            }
+          })
+          .state('app.crearProducto',{
+            url: '/producto/nuevo',
+            templateUrl: 'views/producto/create.html',
+            resolve: {
+              load: function($ocLazyLoad){
+                return $ocLazyLoad.load({
+                  name: "app",
+                  files: [
+                    'controllers/producto/create.js'                    
+                  ]
+                });
+              }
+            }
           });
       }
     ]

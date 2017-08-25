@@ -9,6 +9,7 @@
  */
 angular
   .module('app', [
-      'ui.router',
-      'oc.lazyLoad',
+    'ui.bootstrap',
+    'ui.router',
+    'oc.lazyLoad',
   ]);

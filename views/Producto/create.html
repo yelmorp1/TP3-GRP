@@ -1,0 +1,148 @@
+<div class="container2" ng-controller='ProductoCrearCtrl'>
+    <div class="margenPanelRigth">
+        <fieldset>
+            <legend>Nuevo producto</legend>
+            <br />
+            <tabset class="tab-container">
+                <tab>
+                    <tab-heading>
+                        <i class="fa fa-list-alt"></i> Datos del producto
+                    </tab-heading>
+                    <div class="animated fadeIn">
+                        <br/>
+                        <div class="form-horizontal" role="form">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="inputType" class="col-md-2 control-label">Tipo:</label>
+                                        <div class="col-md-10">
+                                            <select class="form-control">
+                                                <option value="de" selected="selected">Principal</option>
+                                                <option value="en">Sopa</option>
+                                                <option value="en">Entrada</option>
+                                                <option value="en">Bebida</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="inputType" class="col-md-2 control-label">Costo:</label>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" placeholder="Nombre de producto" value="{{nuevo.costo}}" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="inputType" class="col-md-2 control-label">Nombre:</label>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control" placeholder="Nombre de producto" value="{{nuevo.nombre}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="inputType" class="col-md-2 control-label">Precio:</label>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" placeholder="Nombre de producto" value="{{nuevo.precio}}" disabled>
+                                        </div>
+                                    </div>
+                                </div>                          
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="inputType" class="col-md-2 control-label">Rendimiento:</label>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" placeholder="Nombre de producto" value="{{nuevo.rendimiento}}" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <fieldset class="fieldset-border">
+                                <legend class="legend-border">Informaci&oacute;n nutricional</legend>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label for="inputType" class="col-md-4 control-label">Grasas:</label>
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control" placeholder="Nombre de producto" value="{{nuevo.grasas}}" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label for="inputType" class="col-md-4 control-label">Proteinas:</label>
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control" placeholder="Nombre de producto" value="{{nuevo.proteinas}}" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label for="inputType" class="col-md-4 control-label">Calorias:</label>
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control" placeholder="Nombre de producto" value="{{nuevo.calorias}}" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label for="inputType" class="col-md-5 control-label">Carbihidratos:</label>
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control" placeholder="Nombre de producto" value="{{nuevo.carbohidratos}}" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </tab>
+                <tab>
+                    <tab-heading>
+                        <i class="fa fa-tasks"></i> Preparaci&oacute;n
+                    </tab-heading>
+                    <div class="animated fadeIn">
+                        <br/>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <textarea class="form-control" rows="13" style="min-width: 100%"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </tab>
+            </tabset>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h5 class="panel-title"><i class="fa fa-table"></i> Ingredientes</h5>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="form-group row col-md-3">
+                            <span class="input-group-btn" style="padding-left:5px;">
+                                <a class="btn btn-primary" ui-sref="app.crearProducto"  title='Crear receta'>
+                                    <span class='glyphicon glyphicon-folder-open'>
+                                        Nuevo
+                                    </span>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div id="gridSolicitud">
+                                Aqui la grilla!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>

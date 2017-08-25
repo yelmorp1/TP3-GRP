@@ -8,30 +8,56 @@
       <span class="icon-bar"></span>
     </button>
     <a class="navbar-brand" style="padding-top: 0px;padding-bottom: 0px;" href="/Home/Index">
-      <img src="Images/logo-pardos.png" style="height: 80px; padding-left:25px;" />
+      <img src="Images/logo-pardos.png" style="height: 80px; padding-left:25px;">
     </a>
   </div>
-  <ul class="nav navbar-right top-nav" id="menu">
-    <li class="dropdown">
-      <span class="fa-stack fa-lg pull-left"><i class="fa fa-sign-in fa-stack-1x " style="color:#999999"></i></span>
-      <a href="#">Iniciar Sesión</a>
-    </li>
-  </ul>
+  <!-- Top Menu Items -->
+  <div class="navbar-right">
+    <ul class="nav navbar-right top-nav" id="menu">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <i class="fa fa-user"></i> ADMIN <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <li>
+            <a href="#"><i class="fa fa-fw fa-gear"></i> Cambiar Contraseña</a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a href="javascript:document.getElementById('logoutForm').submit()">
+              <i class="fa fa-fw fa-power-off"></i> Cerrar Sessión
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
   <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav side-nav" id="menu">
       <li>
-        <a href="#" data-toggle="collapse">
-          <i class="fa fa-fw fa-caret-down"></i>
-            Recetas y precios
+        <a href="#" data-toggle="collapse" data-target="#demo_1">
+          <i class="fa fa-fw fa-arrows-v"></i>
+          Recetas y precios
           <i class="fa fa-fw fa-caret-down"></i>
         </a>
-        <ul id="demo_3" class="collapse">
+        <ul id="demo_1" class="collapse">
           <li>
-            <a href="#" data-toggle="collapse">
-              <i class="fa fa-fw fa-caret-down"></i>
-                Recetas
-              <i class="fa fa-fw fa-caret-down"></i>
+            <a ui-sref="app.producto">
+              <i class="fa fa-fw fa-file-archive-o"></i>
+              Producto
+            </a>
+          </li>
+          <li>
+            <a href="http://localhost:1052/Solicitud/Index">
+              <i class="fa fa-coffee"></i>
+              Combos
+            </a>
+          </li>
+          <li>
+            <a ui-sref="app.producto">
+              <i class="fa fa-file-pdf-o"></i>
+              Carta
             </a>
           </li>
         </ul>

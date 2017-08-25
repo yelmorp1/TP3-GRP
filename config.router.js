@@ -66,6 +66,7 @@ angular.module('app')
                 return $ocLazyLoad.load({
                   name: "app",
                   files: [
+                    'factories/producto.js',
                     'controllers/producto/index.js'
                   ]
                 });
@@ -80,7 +81,22 @@ angular.module('app')
                 return $ocLazyLoad.load({
                   name: "app",
                   files: [
-                    'controllers/producto/create.js'                    
+                    'controllers/producto/create.js'
+                  ]
+                });
+              }
+            }
+          })
+          .state('app.editarProducto',{
+            url: '/producto/{id:[0-9]{1,4}}',
+            templateUrl: 'views/producto/editar.html',
+            resolve: {
+              load: function($ocLazyLoad){
+                return $ocLazyLoad.load({
+                  name: "app",
+                  files: [
+                    'factories/producto.js',
+                    'controllers/producto/edit.js'
                   ]
                 });
               }

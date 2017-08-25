@@ -20,9 +20,26 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
-                            <div id="gridSolicitud">
-                                Aqui la grilla!
-                            </div>
+                            <img ng-if="isLoading" src="Images/Wait.gif"/>
+                            <table class="table table-striped m-b-none">
+                                <thead>
+                                    <tr>
+                                        <th>Producto</th>
+                                        <th>Precio</th>
+                                        <th>Tipo</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="producto in listaProducto">
+                                        <td>{{producto.Name}}</td>
+                                        <td>{{producto.Price}}</td>
+                                        <td>{{producto.Type}}</td>
+                                        <td><a ui-sref="app.editarProducto({id:producto.Id})" title="Editar producto">Editar</a> | 
+                                            <a ng-click="eliminar(producto.Id)" href="#"  title="Eliminar producto">Eliminar</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

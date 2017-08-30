@@ -101,6 +101,21 @@ angular.module('app')
                 });
               }
             }
+          })
+          .state('app.controlCostos',{
+            url: '/controlcosto',
+            templateUrl: 'views/controlcosto/index.html',
+            resolve: {
+              load: function($ocLazyLoad){
+                return $ocLazyLoad.load({
+                  name: "app",
+                  files: [
+                    'factories/controlcosto.js',
+                    'controllers/controlcosto/index.js'
+                  ]
+                });
+              }
+            }
           });
       }
     ]

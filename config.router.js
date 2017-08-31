@@ -102,15 +102,15 @@ angular.module('app')
               }
             }
           })
-          .state('app.controlCostos',{
+          .state('app.controlCosto',{
             url: '/controlcosto',
-            templateUrl: 'views/controlcosto/index.html',
+            templateUrl: 'views/ControlCosto/index.html',
             resolve: {
               load: function($ocLazyLoad){
                 return $ocLazyLoad.load({
                   name: "app",
                   files: [
-                    'factories/controlcosto.js',
+                    'models/controlcosto.js',
                     'controllers/controlcosto/index.js'
                   ]
                 });

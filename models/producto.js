@@ -2,13 +2,13 @@ app.factory("ProductoFtry", function ($http, $location) {
     return {
         get: function (id) {
             return $http({
-                url: 'http://grpwebapi.azurewebsites.net/api/products/' + id,
+                url: 'http://grpwebapi.azurewebsites.net/api/producto/' + id,
                 method: 'GET'
             });
         },
         getAll: function () {
             return $http({
-                url: 'http://grpwebapi.azurewebsites.net/api/products',
+                url: 'http://grpwebapi.azurewebsites.net/api/producto',
                 method: 'GET'
             });
         },

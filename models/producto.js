@@ -1,31 +1,31 @@
-app.factory("ProductoFtry", function ($http, $location) {
+app.factory("ProductoFtry", function ($http, $location, $rootScope) {
     return {
         get: function (id) {
             return $http({
-                url: 'http://grpwebapi.azurewebsites.net/api/products/' + id,
+                url: $rootScope.baseUrl + '/producto/' + id,
                 method: 'GET'
             });
         },
         getAll: function () {
             return $http({
-                url: 'http://grpwebapi.azurewebsites.net/api/products',
+                url: $rootScope.baseUrl + '/producto',
                 method: 'GET'
             });
         },
         update: function (data) {
             return $http({
-                url: 'data/Area/update',
-                method: "POST",
+                url: $rootScope.baseUrl + '/producto',
+                method: "PUT",
                 data: data,
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             });
         },
         create: function (data) {
             return $http({
-                url: 'data/Area/create',
+                url: $rootScope.baseUrl + '/producto',
                 method: "POST",
                 data: data,
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                headers: { 'Content-Type': 'application/json' }
             });
         },
         delete: function (data) {

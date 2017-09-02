@@ -12,7 +12,9 @@ angular.module('app')
     [           '$rootScope', '$state', '$stateParams',
       function ( $rootScope,   $state,   $stateParams) {
         $rootScope.$state = $state;
-        $rootScope.$stateParams = $stateParams;        
+        $rootScope.$stateParams = $stateParams;
+        //$rootScope.baseUrl = "http://localhost:5375/api";
+        $rootScope.baseUrl = "http://grpwebapi.azurewebsites.net/api";
       }
     ]
   )
@@ -66,7 +68,7 @@ angular.module('app')
                 return $ocLazyLoad.load({
                   name: "app",
                   files: [
-                    'factories/producto.js',
+                    'models/producto.js',
                     'controllers/producto/index.js'
                   ]
                 });
@@ -81,7 +83,12 @@ angular.module('app')
                 return $ocLazyLoad.load({
                   name: "app",
                   files: [
-                    'controllers/producto/create.js'
+                    'controllers/producto/create.js',
+                    'controllers/insumos-modal.js',
+                    'models/categoria.js',
+                    'models/articulo.js',
+                    'models/nutricional.js',
+                    'models/producto.js'
                   ]
                 });
               }
@@ -95,8 +102,12 @@ angular.module('app')
                 return $ocLazyLoad.load({
                   name: "app",
                   files: [
-                    'factories/producto.js',
-                    'controllers/producto/edit.js'
+                    'controllers/producto/edit.js',
+                    'controllers/insumos-modal.js',
+                    'models/categoria.js',
+                    'models/articulo.js',
+                    'models/nutricional.js',
+                    'models/producto.js'
                   ]
                 });
               }

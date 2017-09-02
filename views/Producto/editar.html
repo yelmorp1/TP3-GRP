@@ -3,7 +3,6 @@
         <fieldset>
             <legend>Editar producto</legend>
             <br />
-            <img ng-if="isLoading" src="Images/Wait.gif"/>
             <tabset class="tab-container">
                 <tab>
                     <tab-heading>
@@ -17,12 +16,13 @@
                                     <div class="form-group">
                                         <label for="inputType" class="col-md-2 control-label">Tipo:</label>
                                         <div class="col-md-10">
-                                            <select class="form-control">
-                                                <option value="de" selected="selected">Principal</option>
-                                                <option value="en">Sopa</option>
-                                                <option value="en">Entrada</option>
-                                                <option value="en">Bebida</option>
-                                            </select>
+                                            <select
+                                                name="repeatSelect"
+                                                class="form-control"
+                                                id="repeatSelect" 
+                                                ng-model="producto.IdCategoria"
+                                                ng-options="option.Id as option.Nombre for option in listaCategoria">          
+                                             </select>
                                         </div>
                                     </div>
                                 </div>
@@ -30,7 +30,7 @@
                                     <div class="form-group">
                                         <label for="inputType" class="col-md-2 control-label">Costo:</label>
                                         <div class="col-md-4">
-                                            <input type="text" class="form-control" placeholder="Nombre de producto" value="{{producto.Cost}}" disabled>
+                                            <input type="text" class="form-control" ng-model="producto.Costo" disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -40,15 +40,16 @@
                                     <div class="form-group">
                                         <label for="inputType" class="col-md-2 control-label">Nombre:</label>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control" placeholder="Nombre de producto" value="{{producto.Name}}">
+                                            <input type="text" class="form-control" placeholder="Nombre de producto"
+                                                ng-model="producto.Nombre">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label for="inputType" class="col-md-2 control-label">Precio:</label>
+                                        <label for="inputType" class="col-md-2 control-label">Costo Unit.:</label>
                                         <div class="col-md-4">
-                                            <input type="text" class="form-control" placeholder="Nombre de producto" value="{{producto.Price}}" disabled>
+                                            <input type="text" class="form-control" ng-model="producto.CostoUnitario" disabled>
                                         </div>
                                     </div>
                                 </div>                          
@@ -56,9 +57,28 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
+                                        <label for="inputType" class="col-md-2 control-label">Porciones:</label>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" placeholder="Número de porciones" 
+                                                ng-model="producto.Porciones">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="inputType" class="col-md-2 control-label">Precio:</label>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" ng-model="producto.Precio" disabled>
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
                                         <label for="inputType" class="col-md-2 control-label">Rendimiento:</label>
                                         <div class="col-md-4">
-                                            <input type="text" class="form-control" placeholder="Nombre de producto" value="{{producto.CostThreshold}}" disabled>
+                                            <input type="text" class="form-control" ng-model="producto.Rendimiento" disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -70,7 +90,7 @@
                                         <div class="form-group">
                                             <label for="inputType" class="col-md-4 control-label">Grasas:</label>
                                             <div class="col-md-4">
-                                                <input type="text" class="form-control" placeholder="Nombre de producto" value="{{producto.Fats}}" disabled>
+                                                <input type="text" class="form-control" ng-model="producto.Grasas" disabled>
                                             </div>
                                         </div>
                                     </div>
@@ -78,7 +98,7 @@
                                         <div class="form-group">
                                             <label for="inputType" class="col-md-4 control-label">Proteinas:</label>
                                             <div class="col-md-4">
-                                                <input type="text" class="form-control" placeholder="Nombre de producto" value="{{producto.Proteins}}" disabled>
+                                                <input type="text" class="form-control" ng-model="producto.Proteinas" disabled>
                                             </div>
                                         </div>
                                     </div>
@@ -86,7 +106,7 @@
                                         <div class="form-group">
                                             <label for="inputType" class="col-md-4 control-label">Calorias:</label>
                                             <div class="col-md-4">
-                                                <input type="text" class="form-control" placeholder="Nombre de producto" value="{{producto.Calories}}" disabled>
+                                                <input type="text" class="form-control" ng-model="producto.Calorias" disabled>
                                             </div>
                                         </div>
                                     </div>
@@ -94,7 +114,7 @@
                                         <div class="form-group">
                                             <label for="inputType" class="col-md-5 control-label">Carbihidratos:</label>
                                             <div class="col-md-4">
-                                                <input type="text" class="form-control" placeholder="Nombre de producto" value="{{producto.Carbohydrates}}" disabled>
+                                                <input type="text" class="form-control" ng-model="producto.Carbohidratos" disabled>
                                             </div>
                                         </div>
                                     </div>
@@ -112,38 +132,73 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group">
-                                    <textarea class="form-control" rows="13" style="min-width: 100%"></textarea>
+                                    <textarea class="form-control" rows="13" style="min-width: 100%" ng-model="producto.Elaboracion"></textarea>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </tab>
             </tabset>
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h5 class="panel-title"><i class="fa fa-table"></i> Ingredientes</h5>
+            <fieldset class="fieldset-border">
+                <legend class="legend-border">Insumos</legend>
+                <div class="row">
+                    <div class="form-group row col-md-3">
+                        <span class="input-group-btn" style="padding-left:5px;">
+                            <a class="btn" ng-click="open()"  title='Agregar ingrediente' ng-if="producto.Porciones > 0">
+                                Agregar insumos
+                            </a>
+                        </span>
+                    </div>
                 </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="form-group row col-md-3">
-                            <span class="input-group-btn" style="padding-left:5px;">
-                                <a class="btn btn-primary" ui-sref="app.crearProducto"  title='Crear receta'>
-                                    <span class='glyphicon glyphicon-folder-open'>
-                                        Nuevo
-                                    </span>
-                                </a>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div id="gridSolicitud">
+                            <table class="table table-bordered table-condensed table-hover">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Insumo</th>
+                                        <th class="text-center">Cant.</th>
+                                        <th class="text-center">Unid. Med.</th>
+                                        <th class="text-center">Costo Unid.</th>
+                                        <th class="text-center">% Rendim.</th>
+                                        <th class="text-center">Importe</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="5" class="text-right">Costo Total:</td>
+                                        <td>{{ producto.Costo }}</td>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    <tr ng-repeat="item in Insumos" class="link">
+                                        <td>{{ item.nombre }}</td>
+                                        <td class="text-right">{{ item.Cantidad }}</td>
+                                        <td class="text-center">{{ item.unidadMedida }}</td>
+                                        <td class="text-right">{{ item.Costo }}</td>
+                                        <td class="text-right">{{ item.Rendimiento }}</td>
+                                        <td class="text-right">{{ item.importe }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="row">
+                <div class="form-group row col-md-3">
+                    <span class="input-group-btn" style="padding-left:5px;">
+                        <a class="btn btn-primary" ui-sref="app.crearProducto"  title='Grabar producto'>
+                            <span class='glyphicon glyphicon-floppy-disk' ng-click="grabar()">
+                                Actualizar
                             </span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div id="gridSolicitud">
-                                Aqui la grilla!
-                            </div>
-                        </div>
-                    </div>
+                        </a>
+                    </span>
                 </div>
             </div>
         </fieldset>
+        <script type="text/ng-template" id="modalContent.html">
+            <div ng-include="'views/template/insumos.html'"></div>
+        </script>
     </div>
 </div>

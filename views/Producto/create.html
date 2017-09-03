@@ -3,6 +3,9 @@
         <fieldset>
             <legend>Nuevo producto</legend>
             <br />
+            <div uib-alert ng-if="showAlert" ng-class="'alert-' + (alert.type || 'warning')" 
+                close="closeAlert($index)">{{alert.msg}}</div>
+            <alert ng-if="alert!=null" type="{{alert.type}}" close="closeAlert()">{{alert.msg}}</alert>
             <tabset class="tab-container">
                 <tab>
                     <tab-heading>
@@ -172,12 +175,12 @@
                                 </tfoot>
                                 <tbody>
                                     <tr ng-repeat="item in Insumos" class="link">
-                                        <td>{{ item.nombre }}</td>
+                                        <td>{{ item.Nombre }}</td>
                                         <td class="text-right">{{ item.Cantidad }}</td>
-                                        <td class="text-center">{{ item.unidadMedida }}</td>
+                                        <td class="text-center">{{ item.UnidadMedida }}</td>
                                         <td class="text-right">{{ item.Costo }}</td>
                                         <td class="text-right">{{ item.Rendimiento }}</td>
-                                        <td class="text-right">{{ item.importe }}</td>
+                                        <td class="text-right">{{ item.Importe }}</td>
                                     </tr>
                                 </tbody>
                             </table>

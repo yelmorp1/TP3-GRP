@@ -11,10 +11,12 @@ app.controller('ProductoCrearCtrl', function ($scope, $state, $modal, ProductoFt
         'Calorias': '0.00',
         'Carbohidratos': '0.00',
         'Elaboracion': '',
-        'IdCategoria': '1',
+        'IdCategoria': '0',
         'Porciones': '1',
         'Umbral': '20'
     };
+
+    $scope.alert = null;
 
     $scope.Insumos = [];
 
@@ -27,6 +29,9 @@ app.controller('ProductoCrearCtrl', function ($scope, $state, $modal, ProductoFt
 
     $scope.open = function (size) {
         if(isNaN($scope.producto.Porciones)){
+            $scope.showAlert = true;
+            $scope.alert.type = 'warning';
+            $scope.alert.msg = 'No se ha ingresado el número de porciones';
             return;
         }
         var modalInstance = $modal.open({
@@ -44,16 +49,16 @@ app.controller('ProductoCrearCtrl', function ($scope, $state, $modal, ProductoFt
             NutricionalFtry.get(selectedItem.item.Id).success(function (data) {
                 var nuevoIngrediente = {};
                 nuevoIngrediente.IdArticulo = selectedItem.item.Id;
-                nuevoIngrediente.nombre = selectedItem.item.Nombre;
+                nuevoIngrediente.Nombre = selectedItem.item.Nombre;
                 nuevoIngrediente.Cantidad = parseFloat(selectedItem.cantidad).toFixed(3);
-                nuevoIngrediente.unidadMedida = selectedItem.item.UnidadMedida;
+                nuevoIngrediente.UnidadMedida = selectedItem.item.UnidadMedida;
                 nuevoIngrediente.Costo = (selectedItem.item.Costo).toFixed(2);
                 nuevoIngrediente.Rendimiento = parseFloat(selectedItem.rendimiento).toFixed(2);
-                nuevoIngrediente.importe = parseFloat((nuevoIngrediente.Cantidad/nuevoIngrediente.Rendimiento)* nuevoIngrediente.Costo).toFixed(2);
-                nuevoIngrediente.calorias = parseFloat(data.Calorias * nuevoIngrediente.Cantidad);
-                nuevoIngrediente.carbohidratos = parseFloat(data.Carbohidratos * nuevoIngrediente.Cantidad);
-                nuevoIngrediente.grasas = parseFloat(data.Grasas * nuevoIngrediente.Cantidad);
-                nuevoIngrediente.proteinas = parseFloat(data.Proteinas * nuevoIngrediente.Cantidad);
+                nuevoIngrediente.Importe = parseFloat((nuevoIngrediente.Cantidad/nuevoIngrediente.Rendimiento)* nuevoIngrediente.Costo).toFixed(2);
+                nuevoIngrediente.Calorias = parseFloat(data.Calorias * nuevoIngrediente.Cantidad);
+                nuevoIngrediente.Carbohidratos = parseFloat(data.Carbohidratos * nuevoIngrediente.Cantidad);
+                nuevoIngrediente.Grasas = parseFloat(data.Grasas * nuevoIngrediente.Cantidad);
+                nuevoIngrediente.Proteinas = parseFloat(data.Proteinas * nuevoIngrediente.Cantidad);
                 $scope.Insumos.push(nuevoIngrediente);
                 calcularCosto();
                 calcularRendimientoNutricional();
@@ -70,7 +75,7 @@ app.controller('ProductoCrearCtrl', function ($scope, $state, $modal, ProductoFt
         var ingrediente;
         for (var idx = 0; idx < $scope.Insumos.length; idx++) {
             ingrediente = $scope.Insumos[idx];
-            costoTotal += parseFloat(ingrediente.importe);
+            costoTotal += parseFloat(ingrediente.Importe);
         }
         $scope.producto.Costo = parseFloat(costoTotal).toFixed(2);
         $scope.producto.CostoUnitario = parseFloat(costoTotal/porciones).toFixed(2);
@@ -87,10 +92,10 @@ app.controller('ProductoCrearCtrl', function ($scope, $state, $modal, ProductoFt
         for (var idx = 0; idx < $scope.Insumos.length; idx++) {
             ingrediente = $scope.Insumos[idx];
             rendimientoTotal += parseFloat(ingrediente.Rendimiento);
-            calorias += parseFloat(ingrediente.calorias);
-            carbohidratos += parseFloat(ingrediente.carbohidratos);
-            grasas += parseFloat(ingrediente.grasas);
-            proteinas += parseFloat(ingrediente.proteinas);
+            calorias += parseFloat(ingrediente.Calorias);
+            carbohidratos += parseFloat(ingrediente.Carbohidratos);
+            grasas += parseFloat(ingrediente.Grasas);
+            proteinas += parseFloat(ingrediente.Proteinas);
         }
         $scope.producto.Calorias = parseFloat(calorias).toFixed(2);
         $scope.producto.Carbohidratos = parseFloat(carbohidratos).toFixed(2);
@@ -100,6 +105,15 @@ app.controller('ProductoCrearCtrl', function ($scope, $state, $modal, ProductoFt
     }
 
     $scope.grabar = function(){
+        console.log($scope.producto);
+        if(!$scope.Insumos || $scope.Insumos.length == 0){
+            $scope.alert = { type: 'warning', msg: 'No se ha ingresado los insumos del producto.' };
+            return;
+        }
+        if($scope.producto.IdCategoria<=0){
+            $scope.alert = { type: 'warning', msg: 'No se han completado los datos.' };
+            return;
+        }
         $scope.producto.Insumos = $scope.Insumos;
         ProductoFtry.create($scope.producto).success(function (data) {
             alert("Datos grabados");
@@ -108,4 +122,8 @@ app.controller('ProductoCrearCtrl', function ($scope, $state, $modal, ProductoFt
 
         });
     }
+
+    $scope.closeAlert = function () {
+        $scope.alert = null;
+    };
 })

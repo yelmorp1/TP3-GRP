@@ -68,7 +68,7 @@ app.controller('SolicitudRetiroCrearCtrl', function ($scope, $state, $modal,
             nuevoRegistro.PorcentajeNuevoAporte = parseFloat(0);
             $scope.PorcentajeAporteSimulacion += parseFloat(selectedItem.item.PorcentajeAporte);
             nuevoRegistro.VentaProyectadaNueva = parseFloat(0);
-            $scope.CombosxProyeccion.push(nuevoRegistro);
+            $scope.CombosxProyeccion.push(nuevoRegistro); // otro comentario para probar git
 
             //nuevoRegistro.pesoInterno = parseFloat(0);
             //nuevoRegistro.PorcentajeAporteAfecto = $scope.PorcentajeAporteAfecto;

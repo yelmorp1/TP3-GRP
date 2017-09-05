@@ -12,7 +12,7 @@ app.controller('ProductoCrearCtrl', function ($scope, $state, $modal, ProductoFt
         'Carbohidratos': '0.00',
         'Elaboracion': '',
         'IdCategoria': '0',
-        'Porciones': '1',
+        'Porciones': 1,
         'Umbral': '20'
     };
 
@@ -67,7 +67,7 @@ app.controller('ProductoCrearCtrl', function ($scope, $state, $modal, ProductoFt
         }, function () {
             console.log('Modal dismissed at: ' + new Date());
         });
-    };
+    }
 
     function calcularCosto(){
         var porciones = $scope.producto.Porciones;
@@ -105,15 +105,26 @@ app.controller('ProductoCrearCtrl', function ($scope, $state, $modal, ProductoFt
     }
 
     $scope.grabar = function(){
-        console.log($scope.producto);
+        $scope.alert = null;
+        var msg="";
         if(!$scope.Insumos || $scope.Insumos.length == 0){
-            $scope.alert = { type: 'warning', msg: 'No se ha ingresado los insumos del producto.' };
-            return;
+            msg += 'No se ha ingresado los insumos del producto.';
         }
         if($scope.producto.IdCategoria<=0){
-            $scope.alert = { type: 'warning', msg: 'No se han completado los datos.' };
+            msg += '\nNo se han completado los datos.';
+        }
+        if(!$scope.producto.Nombre){
+            msg += '\nNo se ha ingresado el nombre del producto.';
+        }
+        if(isNaN($scope.producto.Porciones) || $scope.producto.Porciones < 1){
+            msg += '\nNo se ha ingresado un número de porciones válido.';
+        }
+        console.log(msg);
+        if(msg){
+            $scope.alert = { type: 'warning', msg: msg };
             return;
         }
+
         $scope.producto.Insumos = $scope.Insumos;
         ProductoFtry.create($scope.producto).success(function (data) {
             alert("Datos grabados");

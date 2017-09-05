@@ -1,0 +1,53 @@
+<div class="container2" ng-controller='SolicitudRetiroCtrl'>
+    <div class="margenPanelRigth">
+        <fieldset>
+            <legend>Solicitudes de retiro de carta</legend>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-table"></i> Listado de Solicitudes</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="form-group row col-md-3">
+                            <span class="input-group-btn" style="padding-left:5px;">
+                                <a class="btn btn-primary" ui-sref="app.crearSolicitudRetiro"  title='Crear solicitud de retiro'>
+                                    <span class='glyphicon glyphicon-folder-open'>
+                                        Nuevo
+                                    </span>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <img ng-if="isLoading" src="Images/Wait.gif"/>
+                            <div class="alert alert-warning" ng-if="showNoData">No hay datos disponibles</div>
+                            <table class="table table-striped m-b-none">
+                                <thead>
+                                    <tr>
+                                        <th>Codigo</th>
+                                        <th>Fecha Envio</th>
+                                        <th>Tipo de simulacion</th>
+                                        <th>Estado</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="solicitudretiro in listaSolicitudRetiro">
+                                        <td>{{solicitudretiro.Id}}</td>
+                                        <td>{{solicitudretiro.FechaEnvio}}</td>
+                                        <td>{{solicitudretiro.TipoSimulacion}}</td>
+                                        <td>{{solicitudretiro.Estado}}</td>
+                                        <td><a ui-sref="app.editarProducto({id:producto.Id})" title="Editar producto">Editar</a> | 
+                                            <a ng-click="eliminar(producto.Id)" href="#"  title="Eliminar producto">Eliminar</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+        </fieldset>
+    </div>
+</div>

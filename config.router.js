@@ -112,6 +112,38 @@ angular.module('app')
                 });
               }
             }
+          })
+          .state('app.solicitudRetiro',{
+            url: '/solicitudretiro',
+            templateUrl: 'views/solicitudretiro/index.html',
+            resolve: {
+              load: function($ocLazyLoad){
+                return $ocLazyLoad.load({
+                  name: "app",
+                  files: [
+                    'models/solicitudretiro.js',
+                    'controllers/solicitudretiro/index.js'
+                  ]
+                });
+              }
+            }
+          })
+          .state('app.crearSolicitudRetiro',{
+            url: '/solicitudretiro/nuevo',
+            templateUrl: 'views/solicitudretiro/create.html',
+            resolve: {
+              load: function($ocLazyLoad){
+                return $ocLazyLoad.load({
+                  name: "app",
+                  files: [
+                    'models/solicitudretiro.js',
+                    'models/combo.js',
+                    'controllers/insumos-modal.js',                    
+                    'controllers/solicitudretiro/create.js'                    
+                  ]
+                });
+              }
+            }
           });
       }
     ]

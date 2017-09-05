@@ -1,0 +1,34 @@
+<div class="modal-header">
+    <h3 class="modal-title">Agregar combos</h3>
+</div>
+<div class="modal-body">
+    <div class="form-group">
+        <div class="icon-addon addon-sm">
+            <input type="text" ng-model="searchText" placeholder="Buscar" class="form-control" id="buscar">
+            <label for="buscar" class="glyphicon glyphicon-search" rel="tooltip" title="Buscar"></label>
+        </div>
+    </div>
+    <table class="table table-bordered table-condensed table-hover">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Categoria</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="row in items.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | filter:searchText"
+            ng-click="selected.item = row" class="link">
+                <td>{{ row.Nombre }}</td>
+                <td>{{row.Categoria}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" class="pagination-sm" items-per-page="itemsPerPage"></pagination>
+    <fieldset>
+        <legend>Combo: <b>{{ selected.item.Nombre }}</b></legend>
+    </fieldset>
+</div>
+<div class="modal-footer">                  
+    <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+    <button class="btn btn-primary" ng-click="ok()">OK</button>
+</div>

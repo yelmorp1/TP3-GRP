@@ -65,7 +65,7 @@ app.controller('ProductoCrearCtrl', function ($scope, $state, $modal, ProductoFt
             });
             
         }, function () {
-            //$log.info('Modal dismissed at: ' + new Date());
+            console.log('Modal dismissed at: ' + new Date());
         });
     };
 

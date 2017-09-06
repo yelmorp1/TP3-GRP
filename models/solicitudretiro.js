@@ -1,26 +1,20 @@
-app.factory("ProductoFtry", function ($http, $location, $rootScope) {
+app.factory("SolicitudRetiroFtry", function ($http, $location, $rootScope) {
     return {
         get: function (id) {
             return $http({
-                url: $rootScope.baseUrl + '/producto/' + id,
+                url: $rootScope.baseUrl + '/solicitudretiro/' + id,
                 method: 'GET'
             });
         },
         getAll: function () {
             return $http({
-                url: $rootScope.baseUrl + '/producto',
-                method: 'GET'
-            });
-        },
-        getDetails: function (id) {
-            return $http({
-                url: $rootScope.baseUrl + '/producto/' + id + '/details',
+                url: $rootScope.baseUrl + '/solicitudretiro',
                 method: 'GET'
             });
         },
         update: function (data) {
             return $http({
-                url: $rootScope.baseUrl + '/producto',
+                url: $rootScope.baseUrl + '/solicitudretiro',
                 method: "PUT",
                 data: data,
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
@@ -28,7 +22,7 @@ app.factory("ProductoFtry", function ($http, $location, $rootScope) {
         },
         create: function (data) {
             return $http({
-                url: $rootScope.baseUrl + '/producto',
+                url: $rootScope.baseUrl + '/solicitudretiro',
                 method: "POST",
                 data: data,
                 headers: { 'Content-Type': 'application/json' }

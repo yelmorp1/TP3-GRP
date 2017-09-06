@@ -11,7 +11,25 @@ app.controller('ProductoEditarCtrl', function ($scope, $stateParams, $state, $mo
                 $scope.isLoading = false;
             });
         });
+        ProductoFtry.getDetails(id).success(function (data) {
+            $scope.Insumos = data;
+            console.log(data);
+            calcularCosto();
+        });
     });
+
+    function calcularCosto(){
+        var porciones = $scope.producto.Porciones;
+        var costoTotal = parseFloat(0);
+        var ingrediente;
+        for (var idx = 0; idx < $scope.Insumos.length; idx++) {
+            ingrediente = $scope.Insumos[idx];
+            costoTotal += parseFloat(ingrediente.Importe);
+        }
+        $scope.producto.Costo = parseFloat(costoTotal).toFixed(2);
+        $scope.producto.CostoUnitario = parseFloat(costoTotal/porciones).toFixed(2);
+        $scope.producto.Precio = parseFloat((costoTotal * 0.30) +  costoTotal).toFixed(2);
+    }
 
     $scope.eliminar = function(id){
         alert(id);

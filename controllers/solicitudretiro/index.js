@@ -1,10 +1,11 @@
-app.controller('controlCostoCtrl', function ($scope, controlCostoFtry) {
+app.controller('SolicitudRetiroCtrl', function ($scope, SolicitudRetiroFtry) {
     $scope.isLoading = true;
     $scope.showNoData = false;
-    ProductoFtry.getAll().success(function (data) {
-        $scope.listaProducto = data;
+    SolicitudRetiroFtry.getAll().success(function (data) {
+        $scope.listaSolicitudRetiro = data;
         $scope.isLoading = false;
         $scope.showNoData = false;
+        console.log(data);
     }).error(function(err){
         $scope.isLoading = false;
         $scope.showNoData = true;

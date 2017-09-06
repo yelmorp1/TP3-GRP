@@ -1,9 +1,14 @@
-app.controller('ModalInstanceCtrl', function($scope, $modalInstance, items) {
+app.controller('ModalInstanceCtrl', function($scope, $modalInstance, items, filterFilter) {
     $scope.items = items;
+    $scope.filterList = items;
     $scope.selected = {
         item: $scope.items[0],
         cantidad: 1,
         rendimiento: 1
+    };
+
+    $scope.busqueda = {
+        nombre: ''
     };
 
     $scope.ok = function () {
@@ -22,19 +27,12 @@ app.controller('ModalInstanceCtrl', function($scope, $modalInstance, items) {
     $scope.viewby = 5;
     $scope.totalItems = $scope.items.length;
     $scope.currentPage = 1;
-    $scope.itemsPerPage = $scope.viewby;
+    $scope.itemsPerPage = 5;
     $scope.maxSize = 5; //Number of pager buttons to show
-  
-    $scope.setPage = function (pageNo) {
-        $scope.currentPage = pageNo;
+
+    $scope.buscar = function () {
+        $scope.filterList = filterFilter($scope.items, {Nombre: $scope.busqueda.nombre});
+        console.log($scope.busqueda.nombre);
+        console.log($scope.filterList);
     };
-  
-    $scope.pageChanged = function() {
-        console.log('Page changed to: ' + $scope.currentPage);
-    };
-    
-    $scope.setItemsPerPage = function(num) {
-        $scope.itemsPerPage = num;
-        $scope.currentPage = 1; //reset to first paghe
-    }
 })

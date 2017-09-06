@@ -115,12 +115,12 @@ angular.module('app')
           })
           .state('app.controlCosto',{
             url: '/controlcosto',
-            templateUrl: 'views/ControlCosto/index.html',
+            templateUrl: 'views/controlcosto/index.html',
             resolve: {
               load: function($ocLazyLoad){
                 return $ocLazyLoad.load({
                   name: "app",
-                  files: [
+                  files: [ 
                     'models/controlcosto.js',
                     'controllers/controlcosto/index.js'
                   ]
@@ -128,16 +128,48 @@ angular.module('app')
               }
             }
           })
-          .state('app.simularPrecio',{
-            url: '/controlcosto/simularPrecio',
-            templateUrl: 'views/ControlCosto/simularPrecio.html',
+          .state('app.solicitudRetiro',{
+            url: '/solicitudretiro',
+            templateUrl: 'views/solicitudretiro/index.html',
             resolve: {
               load: function($ocLazyLoad){
                 return $ocLazyLoad.load({
                   name: "app",
-                  files: [
-                    'models/simularPrecio.js',
-                    'controllers/controlcosto/simularPrecio.js'
+                  files: [                    
+                    'models/solicitudretiro.js',
+                    'controllers/solicitudretiro/index.js'
+                  ]
+                });
+              }
+            }
+          })
+          .state('app.simularprecio',{
+            url: '/controlcosto/simularPrecio',
+            templateUrl: 'views/controlcosto/create.html',
+            resolve: {
+              load: function($ocLazyLoad){
+                return $ocLazyLoad.load({
+                  name: "app",
+                  files: [ 
+                    'models/simularprecio.js',
+                    'controllers/controlcosto/simularprecio.js'
+                  ]
+                });
+              }
+            }
+          })
+          .state('app.crearSolicitudRetiro',{
+            url: '/solicitudretiro/nuevo',
+            templateUrl: 'views/solicitudretiro/create.html',
+            resolve: {
+              load: function($ocLazyLoad){
+                return $ocLazyLoad.load({
+                  name: "app",
+                  files: [                    
+                    'models/solicitudretiro.js',
+                    'models/combo.js',
+                    'controllers/insumos-modal.js',                    
+                    'controllers/solicitudretiro/create.js'                    
                   ]
                 });
               }

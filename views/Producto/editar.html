@@ -1,7 +1,7 @@
 <div class="container2" ng-controller='ProductoEditarCtrl'>
     <div class="margenPanelRigth">
         <fieldset>
-            <legend>Editar producto</legend>
+            <legend>Nuevo producto</legend>
             <br />
             <tabset class="tab-container">
                 <tab>
@@ -172,12 +172,12 @@
                                 </tfoot>
                                 <tbody>
                                     <tr ng-repeat="item in Insumos" class="link">
-                                        <td>{{ item.nombre }}</td>
-                                        <td class="text-right">{{ item.Cantidad }}</td>
-                                        <td class="text-center">{{ item.unidadMedida }}</td>
-                                        <td class="text-right">{{ item.Costo }}</td>
-                                        <td class="text-right">{{ item.Rendimiento }}</td>
-                                        <td class="text-right">{{ item.importe }}</td>
+                                        <td>{{ item.Nombre }}</td>
+                                        <td class="text-right">{{ item.Cantidad | number:3}}</td>
+                                        <td class="text-center">{{ item.UnidadMedida }}</td>
+                                        <td class="text-right">{{ item.Costo | number:2}}</td>
+                                        <td class="text-right">{{ item.Rendimiento | number:2 }}</td>
+                                        <td class="text-right">{{ item.Importe | number:2}}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -190,7 +190,7 @@
                     <span class="input-group-btn" style="padding-left:5px;">
                         <a class="btn btn-primary" ui-sref="app.crearProducto"  title='Grabar producto'>
                             <span class='glyphicon glyphicon-floppy-disk' ng-click="grabar()">
-                                Actualizar
+                                Grabar
                             </span>
                         </a>
                     </span>

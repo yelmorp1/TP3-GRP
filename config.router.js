@@ -127,7 +127,22 @@ angular.module('app')
                 });
               }
             }
+          })
+          .state('app.simularPrecio',{
+            url: '/controlcosto/simularPrecio',
+            templateUrl: 'views/ControlCosto/simularPrecio.html',
+            resolve: {
+              load: function($ocLazyLoad){
+                return $ocLazyLoad.load({
+                  name: "app",
+                  files: [
+                    'models/simularPrecio.js',
+                    'controllers/controlcosto/simularPrecio.js'
+                  ]
+                });
+              }
+            }
           });
-      }
+      }   
     ]
   );

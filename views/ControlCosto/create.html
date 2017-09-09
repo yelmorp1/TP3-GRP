@@ -1,0 +1,148 @@
+<div class="container2" ng-controller='SimulacionCrearCtrl'>
+	<div class="margenPanelRigth">
+		<fieldset>
+			<legend>Simulación de Precio</legend>
+			<br />
+			<div uib-alert ng-if="showAlert" ng-class="'alert-' + (alert.type || 'warning')" 
+                close="closeAlert($index)">{{alert.msg}}</div>
+            <alert ng-if="alert!=null" type="{{alert.type}}" close="closeAlert()">{{alert.msg}}</alert>
+            <div class="animated fadeIn">      
+
+                <div class="form-horizontal" role="form">
+                    <fieldset class="fieldset-border">
+                        <legend class="legend-border">Lista de Productos afectados</legend>
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <div class="form-group row col-md-3" style="text-align:right;">
+                                    <table class="table table-bordered table-condensed table-hover">
+                                        <div class="form-group row col-md-3" style="text-align:center;">
+                                        	<thead>
+                                                <tr>
+                                                    <th class="text-center">Producto</th>
+                                                    <th class="text-center">Costo actual</th>
+                                                    <th class="text-center">Precio actual</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                               <!--                 <tr ng-repeat="item in CombosxRetiro" class="link">   -->
+                                                    <td class="text-right">ii</td>
+                                                    <td class="text-center">jj</td>
+                                                    <td class="text-center">kk</td>
+                                 <!--               </tr> -->
+                                            </tbody>
+                                        </div>
+                                    </table>
+                                </div>
+
+                                <div class="form-group row col-md-3">
+                                    <span class="input-group-btn" style="padding-rigth:5px;">
+                                        <a class="btn btn-primary"r>
+                                            <span class='glyphicon glyphicon-search'>
+                                            ACTUALIZAR COSTOS DE INSUMOS
+                                            </span>
+                                         </a>
+                                    </span>
+                                 </div>
+
+                            </div>
+           				</div>    
+
+                    </fieldset>
+                </div>
+
+			    <div class="form-horizontal" role="form">
+                    <fieldset class="fieldset-border">
+                        <legend class="legend-border">Detalle de Insimos del Producto</legend>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="gridProductos">
+                                    <table class="table table-bordered table-condensed table-hover">
+                                    	<thead>
+                                            <tr>
+                                                <th class="text-center">Insumo</th>
+                                                <th class="text-center">U.M</th>
+                                                <th class="text-center">Cantidad</th>
+                                                <th class="text-center">Costo Unit.</th>
+                                                <th class="text-center">Importe</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                           <!--                 <tr ng-repeat="item in CombosxRetiro" class="link">   -->
+                                                <td class="text-right">ll</td>
+                                                <td class="text-center">mm</td>
+                                                <td class="text-center">nn</td>
+                                                 <td class="text-center">oo</td>
+                                                  <td class="text-center">pp</td>
+                             <!--               </tr> -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+           				</div>                         	
+                    </fieldset>
+                </div>
+
+                <div class="form-group row col-md-3">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>
+                                    <span class="input-group-btn" style="padding-left:5px;">
+                                        <a class="btn btn-primary">
+                                            <span class='glyphicon glyphicon-hand-up'>
+                                            SIMULAR PRECIO
+                                            </span>
+                                        </a>
+                                    </span>
+                                </th>   
+                                <th>
+                                    <span class="input-group-btn" style="padding-left:5px;">
+                                        <a class="btn btn-primary">
+                                            <span class='glyphicon glyphicon-hand-up'>
+                                            CANCELAR
+                                            </span>
+                                        </a>
+                                    </span>
+                                </th>
+                                <th>
+                                    <span class="input-group-btn" style="padding-left:5px;">
+                                        <a class="btn btn-primary">
+                                            <span class='glyphicon glyphicon-hand-up'>
+                                            ENVIAR A APROBACIÓN
+                                            </span>
+                                        </a>
+                                    </span>
+                                </th>                               
+                            </tr>
+                    </table>
+                </div>
+
+			</br></br>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="inputType" class="col-md-2 control-label">Nuevo Costo:</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" disabled>
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="inputType" class="col-md-2 control-label">Nuevo Precio:</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" disabled>
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+		</fieldset>
+	</div>
+</div>

@@ -113,6 +113,21 @@ angular.module('app')
               }
             }
           })
+          .state('app.controlCosto',{
+            url: '/controlcosto',
+            templateUrl: 'views/controlcosto/index.html',
+            resolve: {
+              load: function($ocLazyLoad){
+                return $ocLazyLoad.load({
+                  name: "app",
+                  files: [ 
+                    'models/controlcosto.js',
+                    'controllers/controlcosto/index.js'
+                  ]
+                });
+              }
+            }
+          })
           .state('app.solicitudRetiro',{
             url: '/solicitudretiro',
             templateUrl: 'views/solicitudretiro/index.html',
@@ -120,9 +135,24 @@ angular.module('app')
               load: function($ocLazyLoad){
                 return $ocLazyLoad.load({
                   name: "app",
-                  files: [
+                  files: [                    
                     'models/solicitudretiro.js',
                     'controllers/solicitudretiro/index.js'
+                  ]
+                });
+              }
+            }
+          })
+          .state('app.simularprecio',{
+            url: '/controlcosto/simularPrecio',
+            templateUrl: 'views/controlcosto/create.html',
+            resolve: {
+              load: function($ocLazyLoad){
+                return $ocLazyLoad.load({
+                  name: "app",
+                  files: [ 
+                    'models/simularprecio.js',
+                    'controllers/controlcosto/simularprecio.js'
                   ]
                 });
               }
@@ -135,7 +165,7 @@ angular.module('app')
               load: function($ocLazyLoad){
                 return $ocLazyLoad.load({
                   name: "app",
-                  files: [
+                  files: [                    
                     'models/solicitudretiro.js',
                     'models/combo.js',
                     'controllers/insumos-modal.js',                    
@@ -145,6 +175,6 @@ angular.module('app')
               }
             }
           });
-      }
+      }   
     ]
   );

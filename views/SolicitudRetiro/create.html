@@ -47,7 +47,7 @@
                                                 <td class="text-right">{{ item.Saldo }}</td>
                                                 <td class="text-right">{{ item.PorcentajeCumplimiento }}</td>
                                                 <td class="text-right">
-                                                    <a ng-click="eliminar(producto.Id)" href="#"  title="Eliminar combo">Eliminar</a>
+                                                    <a ng-click="quitarItemEliminar(item.Id)" title="Eliminar combo">Eliminar</a>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -142,11 +142,11 @@
                                             <tr ng-repeat="item in CombosxProyeccion" class="link">
                                                 <td class="text-left">{{ item.Nombre }}</td>
                                                 <td class="text-right">{{ item.VentaProyectada }}</td>
-                                                <td class="text-center">{{ item.PorcentajeAporte }}</td>
+                                                <td class="text-center">{{ item.PorcentajeAporte | number:2 }}</td>
                                                 <td class="text-right">{{ item.VentaProyectadaNueva }}</td>
                                                 <td class="text-right">{{ item.PorcentajeNuevoAporte }}</td>
                                                 <td class="text-right">
-                                                    <a ng-click="eliminar(producto.Id)" href="#"  title="Eliminar combo">Eliminar</a>
+                                                        <a ng-click="quitarItemSimular(item.Id)" title="Eliminar combo">Eliminar</a>
                                                 </td>
                                             </tr>
                                         </tbody>

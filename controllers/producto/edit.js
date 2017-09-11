@@ -13,7 +13,6 @@ app.controller('ProductoEditarCtrl', function ($scope, $stateParams, $state, $mo
         });
         ProductoFtry.getDetails(id).success(function (data) {
             $scope.Insumos = data;
-            console.log(data);
             calcularCosto();
             calcularRendimientoNutricional();
         });
@@ -45,7 +44,7 @@ app.controller('ProductoEditarCtrl', function ($scope, $stateParams, $state, $mo
                 nuevoIngrediente.Cantidad = parseFloat(selectedItem.cantidad).toFixed(3);
                 nuevoIngrediente.UnidadMedida = selectedItem.item.UnidadMedida;
                 nuevoIngrediente.Costo = (selectedItem.item.Costo).toFixed(2);
-                nuevoIngrediente.Rendimiento = parseFloat(selectedItem.rendimiento).toFixed(2);
+                nuevoIngrediente.Rendimiento = parseFloat(selectedItem.rendimiento / 100).toFixed(2);
                 nuevoIngrediente.Importe = parseFloat((nuevoIngrediente.Cantidad/nuevoIngrediente.Rendimiento)* nuevoIngrediente.Costo).toFixed(2);
                 nuevoIngrediente.Calorias = parseFloat(data.Calorias * nuevoIngrediente.Cantidad);
                 nuevoIngrediente.Carbohidratos = parseFloat(data.Carbohidratos * nuevoIngrediente.Cantidad);
@@ -111,7 +110,6 @@ app.controller('ProductoEditarCtrl', function ($scope, $stateParams, $state, $mo
         if(isNaN($scope.producto.Porciones) || $scope.producto.Porciones < 1){
             msg += '\nNo se ha ingresado un número de porciones válido.';
         }
-        console.log(msg);
         if(msg){
             $scope.alert = { type: 'warning', msg: msg };
             return;
@@ -124,5 +122,12 @@ app.controller('ProductoEditarCtrl', function ($scope, $stateParams, $state, $mo
         }).error(function (data) {
 
         });
+    }
+
+    $scope.quitarItem = function (insumo) {
+        var index = $scope.Insumos.indexOf(insumo);
+        $scope.Insumos.splice(index, 1);
+        calcularCosto();
+        calcularRendimientoNutricional();
     }
 })

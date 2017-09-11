@@ -167,12 +167,14 @@
                                         <th class="text-center">Costo Unid.</th>
                                         <th class="text-center">% Rendim.</th>
                                         <th class="text-center">Importe</th>
+                                        <th class="text-center"></th>
                                     </tr>
                                 </thead>
                                 <tfoot>
                                     <tr>
                                         <td colspan="5" class="text-right">Costo Total:</td>
                                         <td>{{ producto.Costo }}</td>
+                                        <td></td>
                                     </tr>
                                 </tfoot>
                                 <tbody>
@@ -183,6 +185,7 @@
                                         <td class="text-right">{{ item.Costo }}</td>
                                         <td class="text-right">{{ item.Rendimiento }}</td>
                                         <td class="text-right">{{ item.Importe }}</td>
+                                        <td><a class="link" ng-click="quitarItem(item)">Eliminar</a></td>
                                     </tr>
                                 </tbody>
                             </table>
